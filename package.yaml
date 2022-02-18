@@ -27,7 +27,7 @@ library:
   source-dirs: src
 
 executables:
-  rover-exe:
+  rover:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
