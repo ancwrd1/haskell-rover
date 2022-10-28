@@ -6,6 +6,12 @@ import System.Random
 main :: IO ()
 main = do
     gen <- getStdGen
-    let terrain = newTerrain 10 10 gen
-    let rover = Rover (3, 3) North
-    runMission terrain rover [MoveForward, MoveForward, TurnLeft, MoveForward, TurnLeft, MoveBackward]
+    let width = 10
+    let height = 10
+    let position = fst $ randomPosition width height gen
+    let terrain = newTerrain width height gen
+    let rover = Rover position North
+    let commands = [MoveForward, MoveForward, TurnLeft, MoveForward, TurnLeft, MoveForward]
+    putStr "Initial position: "
+    print rover
+    runMission terrain rover commands
