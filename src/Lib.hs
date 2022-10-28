@@ -134,7 +134,11 @@ runCommand terrain rover TurnRight = Rover pos newDir
 
 -- run missions
 runMission :: Terrain -> Rover -> [Command] -> IO ()
-runMission terrain rover [] = putStrLn "Mission successful!"
+runMission terrain rover [] = do
+    putStrLn "Mission successful!"
+    putStr "Final position: "
+    print rover
+    print terrain
 runMission terrain rover (x : xs) =
   if isObstacle terrain $ roverPosition newRover
     then do
